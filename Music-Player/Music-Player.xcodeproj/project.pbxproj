@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C1102DA27DED40E00968F31 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1102D927DED40E00968F31 /* Music.swift */; };
+		2C1102DC27DED47000968F31 /* MusicFeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1102DB27DED47000968F31 /* MusicFeeder.swift */; };
 		2CD5765727CF86C700D9CAF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD5765627CF86C700D9CAF5 /* AppDelegate.swift */; };
 		2CD5765927CF86C700D9CAF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD5765827CF86C700D9CAF5 /* SceneDelegate.swift */; };
 		2CD5765B27CF86C700D9CAF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD5765A27CF86C700D9CAF5 /* ViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C1102D927DED40E00968F31 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		2C1102DB27DED47000968F31 /* MusicFeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFeeder.swift; sourceTree = "<group>"; };
 		2CD5765327CF86C700D9CAF5 /* Music-Player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music-Player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CD5765627CF86C700D9CAF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CD5765827CF86C700D9CAF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +65,8 @@
 				2CD5765627CF86C700D9CAF5 /* AppDelegate.swift */,
 				2CD5765827CF86C700D9CAF5 /* SceneDelegate.swift */,
 				2CD5765A27CF86C700D9CAF5 /* ViewController.swift */,
+				2C1102D927DED40E00968F31 /* Music.swift */,
+				2C1102DB27DED47000968F31 /* MusicFeeder.swift */,
 				2CD5765C27CF86C700D9CAF5 /* Main.storyboard */,
 				2CD5766227CF86C900D9CAF5 /* Assets.xcassets */,
 				2CD5766427CF86C900D9CAF5 /* LaunchScreen.storyboard */,
@@ -141,6 +147,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C1102DC27DED47000968F31 /* MusicFeeder.swift in Sources */,
+				2C1102DA27DED40E00968F31 /* Music.swift in Sources */,
 				2CD5765B27CF86C700D9CAF5 /* ViewController.swift in Sources */,
 				2CD5765727CF86C700D9CAF5 /* AppDelegate.swift in Sources */,
 				2CD5766127CF86C700D9CAF5 /* Music_Player.xcdatamodeld in Sources */,
