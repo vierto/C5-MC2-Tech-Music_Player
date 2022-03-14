@@ -11,10 +11,9 @@ class ViewController: UIViewController {
     
     /// Data
     var arrOfMusicCover: [UIImage] = [UIImage(named: "happy.jpg")!, UIImage(named: "daydreamer.jpg")!, UIImage(named: "is-this-love.jpg")!, UIImage(named: "auld-lang-syne.jpg")!, UIImage(named: "10000-hours.jpg")!]
-    
-    
     var arrOfMusicTitle: [String] = ["Happy","Daydreamer","Is This Love", "Auld Lang Syne", "10,000 Hours"]
     var arrOfMusicsinger: [String] = ["Pharrell Williams","AURORA","Aalia", "Denmark + Winter", "Dan + Shay & Justin Bieber"]
+    var arrOfFavMusic: [Bool] = [false, false, false, false, false]
     
     /// Data Control
     var currMusic = 0
@@ -33,6 +32,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var prevMusicBtn: UIButton!
     @IBOutlet weak var playMusicBtn: UIButton!
     @IBOutlet weak var nextMusicBtn: UIButton!
+    @IBOutlet weak var resetFavesBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,11 @@ class ViewController: UIViewController {
         
         // Set up the first music cover
         imageCoverImage.image = arrOfMusicCover[currMusic]
-        print(arrOfMusicCover.count)
+        
+        // Check first music fave status
+        if arrOfFavMusic[0] {
+            favMusicBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }
         
     }
     
@@ -50,7 +54,9 @@ class ViewController: UIViewController {
         } else {
             currMusic += 1
         }
+        
         imageCoverImage.image = arrOfMusicCover[currMusic]
+        changeHeartIcon()
         
     }
     
@@ -60,8 +66,9 @@ class ViewController: UIViewController {
         } else {
             currMusic = 0
         }
-        imageCoverImage.image = arrOfMusicCover[currMusic]
         
+        imageCoverImage.image = arrOfMusicCover[currMusic]
+        changeHeartIcon()
     }
     
     
@@ -76,7 +83,25 @@ class ViewController: UIViewController {
         print(currState)
     }
     
-    func play() {
+    @IBAction func pressFave(_ sender: Any) {
+        arrOfFavMusic[currMusic] = !arrOfFavMusic[currMusic]
+        changeHeartIcon()
+        print("Status music number \(currMusic) is \(arrOfFavMusic[currMusic])")
+    }
+    
+    @IBAction func pressResetFaves(_ sender: Any) {
+        for i in 0...arrOfFavMusic.count-1 {
+            arrOfFavMusic[i] = false
+        }
+        changeHeartIcon()
+    }
+    
+    func changeHeartIcon() {
+        if arrOfFavMusic[currMusic] {
+            favMusicBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            favMusicBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
         
     }
 
