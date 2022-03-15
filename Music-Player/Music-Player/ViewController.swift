@@ -46,6 +46,7 @@ class ViewController: UIViewController {
             favMusicBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
         
+        
     }
     
     @IBAction func pressNext(_ sender: Any) {
@@ -55,9 +56,7 @@ class ViewController: UIViewController {
             currMusic += 1
         }
         
-        imageCoverImage.image = arrOfMusicCover[currMusic]
-        changeHeartIcon()
-        
+        changeMusic()
     }
     
     @IBAction func pressPrev(_ sender: Any) {
@@ -67,8 +66,7 @@ class ViewController: UIViewController {
             currMusic = 0
         }
         
-        imageCoverImage.image = arrOfMusicCover[currMusic]
-        changeHeartIcon()
+        changeMusic()
     }
     
     
@@ -93,6 +91,11 @@ class ViewController: UIViewController {
         for i in 0...arrOfFavMusic.count-1 {
             arrOfFavMusic[i] = false
         }
+        changeHeartIcon()
+    }
+    
+    func changeMusic() {
+        imageCoverImage.image = arrOfMusicCover[currMusic]
         changeHeartIcon()
     }
     
