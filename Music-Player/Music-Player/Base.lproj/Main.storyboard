@@ -80,16 +80,6 @@
                                     <action selector="pressPlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RXj-Rr-Xfl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WeV-l5-ecU">
-                                <rect key="frame" x="25" y="59" width="186" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Reset Favorites"/>
-                                <connections>
-                                    <action selector="pressResetFaves:" destination="BYZ-38-t0r" eventType="touchUpInside" id="03u-1N-RZf"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4GT-BH-H52">
                                 <rect key="frame" x="36" y="761" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -141,7 +131,6 @@
                         <outlet property="nextMusicBtn" destination="yEi-N9-ZAc" id="9di-Fq-ubB"/>
                         <outlet property="playMusicBtn" destination="aqV-oE-EX4" id="KCc-hL-pBV"/>
                         <outlet property="prevMusicBtn" destination="Gm2-jo-c46" id="9Mp-tU-Wjf"/>
-                        <outlet property="resetFavesBtn" destination="WeV-l5-ecU" id="B54-Na-mpz"/>
                         <outlet property="timeLeftLbl" destination="njA-8i-Vx4" id="z9c-4X-WOe"/>
                     </connections>
                 </viewController>

@@ -23,7 +23,6 @@ class ViewController: UIViewController {
     /// Outlets
     @IBOutlet weak var imageCoverImage: UIImageView!
     @IBOutlet weak var imageBackground: UIImageView!
-    @IBOutlet weak var tintBackground: UIImageView!
     
     @IBOutlet weak var lyricsTextView: UITextView!
     
@@ -38,7 +37,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var prevMusicBtn: UIButton!
     @IBOutlet weak var playMusicBtn: UIButton!
     @IBOutlet weak var nextMusicBtn: UIButton!
-    @IBOutlet weak var resetFavesBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,13 +130,6 @@ class ViewController: UIViewController {
         arrOfFavMusic[currMusic] = !arrOfFavMusic[currMusic]
         changeHeartIcon()
         print("Status music number \(currMusic) is \(arrOfFavMusic[currMusic])")
-    }
-    
-    @IBAction func pressResetFaves(_ sender: Any) {
-        for i in 0...arrOfFavMusic.count-1 {
-            arrOfFavMusic[i] = false
-        }
-        changeHeartIcon()
     }
     
     func changeMusic() {
