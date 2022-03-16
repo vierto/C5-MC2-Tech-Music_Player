@@ -12,4 +12,8 @@ struct Music {
     var image: UIImage?
     var title: String?
     var singer: String?
+    var lyrics: String?
+    var startTime: Float?
+    var endTime: Float?
+    var isFavorite: Bool?
 }

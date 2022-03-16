@@ -10,11 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     /// Data
-    var arrOfMusicCover: [UIImage] = [UIImage(named: "happy.jpg")!, UIImage(named: "daydreamer.jpg")!, UIImage(named: "is-this-love.jpg")!, UIImage(named: "auld-lang-syne.jpg")!, UIImage(named: "10000-hours.jpg")!]
-    var arrOfMusicTitle: [String] = ["Happy","Daydreamer","Is This Love", "Auld Lang Syne", "10,000 Hours"]
-    var arrOfMusicSinger: [String] = ["Pharrell Williams","AURORA","Aalia", "Denmark + Winter", "Dan + Shay & Justin Bieber"]
-    var arrOfFavMusic: [Bool] = [false, false, false, false, false]
-    var arrOfLyrics: [String] = ["Huh (Because I'm happy) Clap along if you feel like a room without a roof (Because I'm happy) Clap along if you feel like happiness is the truth (Because I'm happy) Clap along if you know what happiness is to you", "And we become night time dreamers Street walkers and small talkers When we should be daydreamers And moonwalkers and dream talkers And we become night time dreamers Street walkers, small talkers When we should be daydreamers And moonwalkers and dream talkers In real life", "A blue bird in my heart Why do you try to get it out It's sad It's sad to know you Don't take out my blue bird It only knows how to stay dark Don't spoil It shouldn't hurt no more","Should auld acquaintance be forgot And never brought to mind? Should auld acquaintance be forgot And days auld lang syne? For auld lang syne, my dear For auld lang syne We'll take a cup of kindness yet For auld lang syne","I'd spend 10, 000 hours and 10, 000 more Oh, if that's what it takes to learn that sweet heart of yours And I might never get there, but I'm gonna try If it's 10, 000 hours or the rest of my life I'm gonna love you (Ooh, ooh-ooh, ooh, ooh) Do you miss the road that you grew up on? Did you get your middle name from your grandma? When you think about your forever now Do you think of me?"]
+    var arrOfMusic: [Music] = []
     
     /// Data Control
     var currMusic = 0
@@ -23,7 +19,6 @@ class ViewController: UIViewController {
     /// Outlets
     @IBOutlet weak var imageCoverImage: UIImageView!
     @IBOutlet weak var imageBackground: UIImageView!
-    @IBOutlet weak var tintBackground: UIImageView!
     
     @IBOutlet weak var lyricsTextView: UITextView!
     
@@ -44,17 +39,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // Insert music
+        arrOfMusic = MusicFeeder.init().arrOfMusic
+        
         // Set up the first music cover
-        imageCoverImage.image = arrOfMusicCover[currMusic]
+        imageCoverImage.image = arrOfMusic[0].image
         
         // Set up the first music title
-        musicTitleLbl.text = arrOfMusicTitle[currMusic]
+        musicTitleLbl.text = arrOfMusic[0].title
         
         // Set up the first music singer
-        musicSingerLbl.text = arrOfMusicSinger[currMusic]
+        musicSingerLbl.text = arrOfMusic[0].singer
         
         // Set up lyrics
-        lyricsTextView.text = arrOfLyrics[0]
+        lyricsTextView.text = arrOfMusic[0].lyrics
         
         // Set up background
         imageBackground.image = UIImage(named: "happy.jpg")
@@ -67,7 +65,7 @@ class ViewController: UIViewController {
         musicDurationSlider.setValue(0, animated: true)
         
         // Check first music fave status
-        if arrOfFavMusic[0] {
+        if arrOfMusic[0].isFavorite! {
             favMusicBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
         
@@ -89,7 +87,7 @@ class ViewController: UIViewController {
     @IBAction func pressNext(_ sender: Any) {
         
         // Validate if it's already on the last page
-        if currMusic ==  arrOfMusicCover.count-1 {
+        if currMusic ==  arrOfMusic.count-1 {
             currMusic = 0
         } else {
             currMusic += 1
@@ -109,7 +107,7 @@ class ViewController: UIViewController {
     }
     
     @objc func changeLyrics() {
-        arrOfLyrics[currMusic] = lyricsTextView.text
+        arrOfMusic[currMusic].lyrics = lyricsTextView.text
     }
     
     
@@ -129,31 +127,31 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pressFave(_ sender: Any) {
-        arrOfFavMusic[currMusic] = !arrOfFavMusic[currMusic]
+        arrOfMusic[currMusic].isFavorite = !arrOfMusic[currMusic].isFavorite!
         changeHeartIcon()
-        print("Status music number \(currMusic) is \(arrOfFavMusic[currMusic])")
+        print("Status music number \(currMusic) is \(arrOfMusic[currMusic].isFavorite)")
     }
     
     @IBAction func pressResetFaves(_ sender: Any) {
-        for i in 0...arrOfFavMusic.count-1 {
-            arrOfFavMusic[i] = false
+        for i in 0...arrOfMusic.count-1 {
+            arrOfMusic[i].isFavorite = false
         }
         changeHeartIcon()
     }
     
     func changeMusic() {
-        imageCoverImage.image = arrOfMusicCover[currMusic]
-        imageBackground.image = arrOfMusicCover[currMusic]
-        musicTitleLbl.text = arrOfMusicTitle[currMusic]
-        musicSingerLbl.text = arrOfMusicSinger[currMusic]
-        lyricsTextView.text = arrOfLyrics[currMusic]
+        imageCoverImage.image = arrOfMusic[currMusic].image
+        imageBackground.image = arrOfMusic[currMusic].image
+        musicTitleLbl.text = arrOfMusic[currMusic].title
+        musicSingerLbl.text = arrOfMusic[currMusic].singer
+        lyricsTextView.text = arrOfMusic[currMusic].lyrics
         
         changeHeartIcon()
     }
     
     
     func changeHeartIcon() {
-        if arrOfFavMusic[currMusic] {
+        if arrOfMusic[currMusic].isFavorite! {
             favMusicBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             favMusicBtn.setImage(UIImage(systemName: "heart"), for: .normal)
