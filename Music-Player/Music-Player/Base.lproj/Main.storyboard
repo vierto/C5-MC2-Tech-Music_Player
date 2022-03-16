@@ -127,6 +127,7 @@
                         <outlet property="currTimeLbl" destination="wIC-TV-Yyo" id="28W-WC-L9h"/>
                         <outlet property="favMusicBtn" destination="Bk0-0f-INR" id="Oh1-Qu-IUt"/>
                         <outlet property="imageCoverImage" destination="2Rm-o5-Ene" id="6jY-gS-fze"/>
+                        <outlet property="lyricsTextView" destination="g3M-XV-zG4" id="oEG-Zw-arX"/>
                         <outlet property="musicDurationSlider" destination="Xvn-9I-xHq" id="TDK-8z-rxx"/>
                         <outlet property="musicSingerLbl" destination="Ur8-Jt-hAH" id="2ei-hr-faW"/>
                         <outlet property="musicTitleLbl" destination="jfO-kd-oIk" id="0d2-79-8Rf"/>
