@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     
     /// Outlets
     @IBOutlet weak var imageCoverImage: UIImageView!
+    @IBOutlet weak var imageBackground: UIImageView!
+    @IBOutlet weak var tintBackground: UIImageView!
     
     @IBOutlet weak var lyricsTextView: UITextView!
     
@@ -51,16 +53,36 @@ class ViewController: UIViewController {
         // Set up the first music singer
         musicSingerLbl.text = arrOfMusicSinger[currMusic]
         
-        
         // Set up lyrics
         lyricsTextView.text = arrOfLyrics[0]
+        
+        // Set up background
+        imageBackground.image = UIImage(named: "happy.jpg")
+        
+        // Set UISlider starting value and ending value
+        musicDurationSlider.minimumValue = 0
+        musicDurationSlider.maximumValue = 3
+        
+        // Set UISlider value to starting position
+        musicDurationSlider.setValue(0, animated: true)
         
         // Check first music fave status
         if arrOfFavMusic[0] {
             favMusicBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
         
+        // To notify the changeLyrics function when textView value changed
         NotificationCenter.default.addObserver(self, selector: #selector(changeLyrics), name: UITextView.textDidChangeNotification, object: nil)
+        
+        // To blur background
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurEffectView = UIVisualEffectView()
+        blurEffectView.frame = CGRect(x: 0, y: 0, width: imageBackground.frame.width + 30 , height: imageBackground.frame.height)
+        blurEffectView.center = imageBackground.center
+        self.imageBackground.addSubview(blurEffectView)
+        UIView.animate(withDuration: 5) {
+            blurEffectView.effect = blurEffect
+        }
         
     }
     
@@ -92,6 +114,10 @@ class ViewController: UIViewController {
     
     
     @IBAction func pressPlay(_ sender: Any) {
+        
+        musicDurationSlider.setValue(3, animated: true)
+        timeLeftLbl.text = "03.00"
+        
         if !currState {
             playMusicBtn.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             currState = true
@@ -117,6 +143,7 @@ class ViewController: UIViewController {
     
     func changeMusic() {
         imageCoverImage.image = arrOfMusicCover[currMusic]
+        imageBackground.image = arrOfMusicCover[currMusic]
         musicTitleLbl.text = arrOfMusicTitle[currMusic]
         musicSingerLbl.text = arrOfMusicSinger[currMusic]
         lyricsTextView.text = arrOfLyrics[currMusic]
@@ -134,18 +161,4 @@ class ViewController: UIViewController {
         
     }
 
-
 }
-
-
-
-// Day 1 baru taro UI aja (debugging view)
-// Day 2 variabelnya satu aja, cover, music title, singer gabisa diganti2 (ada print2, breakpoint)
-// Day 3 buttonnya bisa ganti2 image, ada ads (atau gambar ganti2) (ada print2, breakpoint) (data pake array -> model)
-
-// Notes: TextField sama TextView, gapake delegate?
-// Loop jadi Timer
-
-// Task: minta feedback
-// Keynote, Senin setelah FW
-// Tanggal Delivery 1 bulan
