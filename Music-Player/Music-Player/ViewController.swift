@@ -36,7 +36,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var favMusicBtn: UIButton!
     @IBOutlet weak var prevMusicBtn: UIButton!
     @IBOutlet weak var playMusicBtn: UIButton!
-    @IBOutlet weak var nextMusicBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +84,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pressNext(_ sender: Any) {
-        
+    
         // Validate if it's already on the last page
         if currMusic ==  arrOfMusicCover.count-1 {
             currMusic = 0
