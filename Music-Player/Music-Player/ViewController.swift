@@ -57,29 +57,9 @@ class ViewController: UIViewController {
         // Set up background
         imageBackground.image = UIImage(named: "happy.jpg")
         
-        // Set UISlider starting value and ending value
-        musicDurationSlider.minimumValue = 0
-        musicDurationSlider.maximumValue = 3
-        
-        // Set UISlider value to starting position
-        musicDurationSlider.setValue(0, animated: true)
-        
         // Check first music fave status
         if arrOfMusic[0].isFavorite! {
             favMusicBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        }
-        
-        // To notify the changeLyrics function when textView value changed
-        NotificationCenter.default.addObserver(self, selector: #selector(changeLyrics), name: UITextView.textDidChangeNotification, object: nil)
-        
-        // To blur background
-        let blurEffect = UIBlurEffect(style: .light)
-        let blurEffectView = UIVisualEffectView()
-        blurEffectView.frame = CGRect(x: 0, y: 0, width: imageBackground.frame.width + 30 , height: imageBackground.frame.height)
-        blurEffectView.center = imageBackground.center
-        self.imageBackground.addSubview(blurEffectView)
-        UIView.animate(withDuration: 5) {
-            blurEffectView.effect = blurEffect
         }
         
     }
@@ -105,11 +85,6 @@ class ViewController: UIViewController {
         }
         changeMusic()
     }
-    
-    @objc func changeLyrics() {
-        arrOfMusic[currMusic].lyrics = lyricsTextView.text
-    }
-    
     
     @IBAction func pressPlay(_ sender: Any) {
         
