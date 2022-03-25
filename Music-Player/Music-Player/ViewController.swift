@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     var musicFavorite3: Bool = false
     
     /// Data Control
-    var currState = false
+    var isPlaying = false
     
     /// Outlets
     @IBOutlet weak var imageCoverImage: UIImageView!
@@ -61,6 +61,7 @@ class ViewController: UIViewController {
         
         // Set up the first music title
         musicTitleLbl.text = musicTitle2
+        musicTitleLbl.text = "\(1) \(musicTitleLbl.text ?? "")"
         
         // Set up the first music singer
         musicSingerLbl.text = musicSinger2
@@ -118,17 +119,16 @@ class ViewController: UIViewController {
     
     @IBAction func pressPlay(_ sender: Any) {
         
-        musicDurationSlider.setValue(3, animated: true)
-        timeLeftLbl.text = "03.00"
+        musicDurationSlider.value += 1
         
-        if !currState {
-            playMusicBtn.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            currState = true
-        } else {
+        if isPlaying == true {
             playMusicBtn.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            currState = false
+            isPlaying = false
+        } else {
+            playMusicBtn.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            isPlaying = true
         }
-        print(currState)
+        
     }
 
 }
