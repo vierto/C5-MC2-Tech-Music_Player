@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     
     /// Data
     var arrOfMusic: [Music] = []
+    var feeder = DataFeeder()
     
     /// Data Control
     var currMusic = 0
@@ -40,7 +41,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // Insert music
-        arrOfMusic = MusicFeeder.init().arrOfMusic
+        arrOfMusic = feeder.feedMusic()
+        
         
         // Set up the first music cover
         imageCoverImage.image = arrOfMusic[0].image
@@ -65,7 +67,7 @@ class ViewController: UIViewController {
         musicDurationSlider.setValue(0, animated: true)
         
         // Check first music fave status
-        if arrOfMusic[0].isFavorite! {
+        if arrOfMusic[0].isFavorite {
             favMusicBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
         
@@ -127,7 +129,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pressFave(_ sender: Any) {
-        arrOfMusic[currMusic].isFavorite = !arrOfMusic[currMusic].isFavorite!
+        arrOfMusic[currMusic].isFavorite = !arrOfMusic[currMusic].isFavorite
         changeHeartIcon()
         print("Status music number \(currMusic) is \(arrOfMusic[currMusic].isFavorite)")
     }
@@ -151,7 +153,7 @@ class ViewController: UIViewController {
     
     
     func changeHeartIcon() {
-        if arrOfMusic[currMusic].isFavorite! {
+        if arrOfMusic[currMusic].isFavorite {
             favMusicBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             favMusicBtn.setImage(UIImage(systemName: "heart"), for: .normal)
