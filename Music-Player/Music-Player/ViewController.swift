@@ -10,7 +10,6 @@ import UIKit
 class ViewController: UIViewController {
     
     /// Data
-    
     /// Music 1
     var musicTitle: String = "Happy"
     var musicSinger: String = "Pharrell Williams"
@@ -33,7 +32,7 @@ class ViewController: UIViewController {
     var musicFavorite3: Bool = false
     
     /// Data Control
-    var currState = false
+    var currMusic: Int? = 5
     
     /// Outlets
     @IBOutlet weak var imageCoverImage: UIImageView!
@@ -60,7 +59,12 @@ class ViewController: UIViewController {
         imageCoverImage.image = musicImage2
         
         // Set up the first music title
-        musicTitleLbl.text = musicTitle2
+        if let idx = currMusic {
+            musicTitleLbl.text = "\(idx) \(musicTitle2)"
+        } else {
+            musicTitleLbl.text = "\(musicTitle2)"
+        }
+        
         
         // Set up the first music singer
         musicSingerLbl.text = musicSinger2
@@ -94,7 +98,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pressNext(_ sender: Any) {
-    
         imageCoverImage.image = musicImage3
         imageBackground.image = musicImage3
         musicTitleLbl.text = musicTitle3
@@ -121,14 +124,6 @@ class ViewController: UIViewController {
         musicDurationSlider.setValue(3, animated: true)
         timeLeftLbl.text = "03.00"
         
-        if !currState {
-            playMusicBtn.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            currState = true
-        } else {
-            playMusicBtn.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            currState = false
-        }
-        print(currState)
     }
 
 }
