@@ -62,6 +62,16 @@ class ViewController: UIViewController {
             favMusicBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
         
+        // To blur background (put this on your ViewController's viewDidLoad())
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurEffectView = UIVisualEffectView()
+        blurEffectView.frame = CGRect(x: 0, y: 0, width: imageBackground.frame.width + 30 , height: imageBackground.frame.height)
+        blurEffectView.center = imageBackground.center
+        self.imageBackground.addSubview(blurEffectView)
+        UIView.animate(withDuration: 5) {
+            blurEffectView.effect = blurEffect
+        }
+        
     }
     
     @IBAction func pressNext(_ sender: Any) {
