@@ -62,6 +62,8 @@ class ViewController: UIViewController {
             favMusicBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
         
+        // To notify the changeLyrics function when textView value changed
+        NotificationCenter.default.addObserver(self, selector: #selector(updateChangedLyricstoArray), name: UITextView.textDidChangeNotification, object: nil)
     }
     
     @IBAction func pressNext(_ sender: Any) {
@@ -134,4 +136,7 @@ class ViewController: UIViewController {
         
     }
 
+    @objc func updateChangedLyricstoArray() {
+        arrOfMusic[currMusic].lyrics = lyricsTextView.text
+    }
 }
